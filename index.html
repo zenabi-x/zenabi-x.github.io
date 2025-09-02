@@ -1,6 +1,182 @@
-<head>
-  <link rel="stylesheet" href="/home.css"/>
+<head><meta charset="UTF-8">
+<style>
+body {background: #292948; color: #F8708C; font-family: monospace;}
+header, footer {
+  height: 40px;
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    #1a2d5a 50%,   /* slightly lighter blue top */
+    #0e1c45 50%    /* slightly darker blue bottom */
+  );
+  overflow: hidden;
+  border-radius: 10%;
+  text-align: center;
+}
+header::active {
+  height: 80px;
+  position: relative;
+  background: black;
+  overflow: hidden;
+  border-radius: 10%;
+  text-align: center;
+  
+}
+
+/* Top gloss */
+header::after, footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; 
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+}
+
+/* Bottom gloss/shade */
+header::before, footer::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(100, 100, 100, 0.25),
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+}
+
+.aero-button {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    #1a2d5a 50%,   /* slightly lighter blue top */
+    #0e1c45 50%    /* slightly darker blue bottom */
+  );
+  border-radius: 1%;
+  padding: 8px;
+      transition: all 0.2s ease;
+      font-family: sans-serif;
+    }
+
+    .aero-button::before {
+      content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(100, 100, 100, 0.25),
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+    }
+
+    .aero-button:hover {
+      transform: translateY(14px);
+      box-shadow:
+        inset 0 2px 5px rgba(255,255,255,0.6),
+        inset 0 -2px 5px rgba(0,0,0,0.15),
+        0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .aero-button:active {
+      transform: scale(0.97);
+      box-shadow:
+        inset 0 2px 5px rgba(0,0,0,0.3),
+        inset 0 -2px 5px rgba(255,255,255,0.2),
+        0 2px 4px rgba(0,0,0,0.2);
+      cursor: url("land.png"), auto;
+    }
+
+</style>
 </head>
 <body>
   <header>Z Ξ N Λ B !</header>
+  <div class='aero-button'>
+    <h1>Hello, world</h1>
+    <p>I make weird and funny apps and scripts.</p><p></p>
+    <h1>The peak of AHHHHH innovation</h1>
+    <p>Lol</p><p></p>
+    <h1>Celsius to Inferno converter</h1>
+    <p>Inferno (°I) is my own temperature scale.</p>
+  <style>
+    .body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+      padding: 50px;
+    }
+    .body:active  {
+      transform: scale(0.97);
+      box-shadow:
+        inset 0 2px 5px rgba(0,0,0,0.3),
+        inset 0 -2px 5px rgba(255,255,255,0.2),
+        0 2px 4px rgba(0,0,0,0.2);
+      cursor: url("land.png"), auto;
+    
+      }
+    input {
+      padding: 8px;
+      margin: 10px;
+      width: 120px;
+      text-align: center;
+      font-size: 1.1em;
+      border-radius: 6px;
+      border: none;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 1.4em;
+    }
+  </style>
+<div class="body">
+  <h1>Celsius to/from Inferno</h1>
+  
+  <div>
+    <label>Celsius °C:</label><br>
+    <input id="celsius" type="number" step="0.01" oninput="convertCtoS()">
+  </div>
+  
+  <div>
+    <label>Inferno Scale °I:</label><br>
+    <input id="inferno" type="number" step="0.01" oninput="convertStoC()">
+  </div>
+
+  <div class="output" id="result"></div>
+
+  <script>
+    function convertCtoS() {
+      let C = parseFloat(document.getElementById("celsius").value);
+      if (isNaN(C)) return;
+      let S = -666 + (333/25) * C;
+      document.getElementById("inferno").value = S.toFixed(2);
+      document.getElementById("result").innerText = `${C} °C = ${S.toFixed(2)} °I`;
+    }
+
+    function convertStoC() {
+      let S = parseFloat(document.getElementById("inferno").value);
+      if (isNaN(S)) return;
+      let C = (25/333) * (S + 666);
+      document.getElementById("celsius").value = C.toFixed(2);
+      document.getElementById("result").innerText = `${S} °I = ${C.toFixed(2)} °C`;
+    }
+  </script>
+</div>
+    <p></p>
+    <h1></h1><p></p>
+  </div><p></p>
+  <footer>&copy; Zenabi and the Distortion Alliance.</footer>
 </body>
